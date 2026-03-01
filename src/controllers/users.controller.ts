@@ -207,7 +207,7 @@ const changeSensetive = async (req: Request, res: Response) => {
     }]);
   }
 
-  const user = await userRepository.getByEmail(loginData.email) || null;
+  const user = await userRepository.getById(req.normalizedUser?.id) || null;
 
   if (toChange?.email && await userRepository.getByEmail(toChange?.email)) {
     throw ApiError.badRequest([{

@@ -7,7 +7,7 @@ export const router = Router();
 
 router.get('/profile', authMiddleware, catchAsync(userController.profile));
 router.get('/activate/:email/:activationToken', catchAsync(userController.activate));
-router.post('/logout', catchAsync(userController.logout))
+router.post('/logout',authMiddleware, catchAsync(userController.logout))
 
 router.post('/login', catchAsync(userController.login));
 router.post('/sign-up', catchAsync(userController.create));
