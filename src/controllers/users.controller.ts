@@ -232,7 +232,15 @@ const changeSensetive = async (req: Request, res: Response) => {
     }])
   }
 
-  const updatedUser = await userRepository.change(user.id, toChange);
+  const updatedToChange = { ...toChange }
+
+  if (Object.keys(updatedToChange).includes('password')) {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(updatedToChange.password, salt);
+    updatedToChange.password = hashedPassword
+  }
+
+  const updatedUser = await userRepository.change(user.id, updatedToChange);
 
   if (!updatedUser) {
     throw new ApiError(
