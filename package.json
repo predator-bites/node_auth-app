@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "init": "mate-scripts init",
-    "build": "prisma generate && tsup",
+    "build": "pnpm install --frozen-lockfile && npx prisma generate && npx prisma migrate deploy && pnpm tsup && node dist/index.js && pnpm prune --prod",
     "start": "node dist/index.js",
     "lint": "npm run format && mate-scripts lint",
     "format": "prettier --ignore-path .prettierignore --write './src/**/*.{js,ts}'",
