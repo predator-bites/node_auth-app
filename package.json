@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "init": "mate-scripts init",
-    "build": "pnpm install --no-frozen-lockfile && npx prisma generate && npx prisma migrate deploy && pnpm tsup && node dist/index.js && pnpm prune --prod",
+    "build": "pnpm install --no-frozen-lockfile && npx prisma generate && npx prisma migrate deploy && npx tsup && node dist/index.js && pnpm prune --prod",
     "start": "node dist/index.js",
     "lint": "npm run format && mate-scripts lint",
     "format": "prettier --ignore-path .prettierignore --write './src/**/*.{js,ts}'",
@@ -47,11 +47,12 @@
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
+    "mate-scripts": "^0.0.1",
     "ms": "^2.1.3",
     "nodemailer": "^8.0.1",
     "nodemon": "^3.1.14",
     "tsup": "^8.5.1",
-    "uuid": "^13.0.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "uuid": "^13.0.0"
   }
 }
