@@ -3,10 +3,11 @@
   "name": "node_auth-app",
   "version": "1.0.0",
   "description": "Auth app",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "init": "mate-scripts init",
-    "start": "node src/index.js",
+    "build": "prisma generate && tsup",
+    "start": "node dist/index.js",
     "lint": "npm run format && mate-scripts lint",
     "format": "prettier --ignore-path .prettierignore --write './src/**/*.{js,ts}'",
     "test:only": "mate-scripts test",
